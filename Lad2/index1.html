@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="edit-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="edit" aria-selected="true">Cập nhật</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">Danh sách</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+            <div class="bordered bg-secondary text-white p-3">
+                <h4 class="align-left"><i class="fas fa-pen-to-square"></i> Nhập lương tháng 12</h4>
+            </div>
+            <div class="bordered p-3">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="MaNV">Mã nhân viên</label>
+                            <input type="text" class="form-control" id="MaNV" placeholder="Mã nhân viên">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="HoTen">Họ và tên</label>
+                            <input type="text" class="form-control" id="HoTen" placeholder="Họ và tên">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="CauLacBo">Câu lạc bộ</label>
+                            <select id="CauLacBo" class="form-control">
+                                <option selected>Ha Noi</option>
+                                <option>HCM</option>
+                                <option>DA Nang</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Luong">Lương</label>
+                            <input type="text" class="form-control" id="Luong" placeholder="Lương">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Thuong">Thưởng</label>
+                            <input type="text" class="form-control" id="Thuong" placeholder="Thưởng">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="PhuCap">Phụ cấp</label>
+                            <input type="text" class="form-control" id="PhuCap" placeholder="Phụ cấp">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="GhiChu">Ghi chú</label>
+                        <textarea class="form-control" id="GhiChu" rows="3" placeholder="Ghi chú"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-dark"><i class="fas fa-file-export"></i> Lưu</button>
+                    <button type="submit" class="btn btn-light"><i class="fas fa-times"></i> Hủy</button>
+                </form>
+            </div>
+            <div class="bordered bg-secondary text-white d-flex align-items-center p-2">
+                <p class="m-0">Nhập lương tháng 12</p>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-light bg-success">
+                    <tr>
+                        <th colspan="5"><i class="fas fa-bars"></i> Bảng lương tháng 12</th>
+                    </tr>
+                    <tr>
+                        <th rowspan="2" class="text-center align-middle bg-warning">Mã NV</th>
+                        <th rowspan="2" class="text-center align-middle bg-warning">Họ Và Tên</th>
+                        <th colspan="3" class="text-center bg-warning">Thu nhập</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center bg-warning">Lương</th>
+                        <th class="text-center bg-warning">Thưởng</th>
+                        <th class="text-center bg-warning">Phụ cấp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>10,000,000 VND</td>
+                        <td>2,000,000 VND</td>
+                        <td>1,000,000 VND</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Trần Thị B</td>
+                        <td>12,000,000 VND</td>
+                        <td>1,500,000 VND</td>
+                        <td>800,000 VND</td>
+                    </tr>
+                    <tr>
+                        <td>03</td>
+                        <td>Lê Văn C</td>
+                        <td>9,000,000 VND</td>
+                        <td>2,200,000 VND</td>
+                        <td>600,000 VND</td>
+                    </tr>
+                </tbody>
+                <thead class="thead-light bg-success">
+                    <tr>
+                        <th colspan="5">Lương của cầu thủ và huấn luyện viên chuyên nghiệp</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
