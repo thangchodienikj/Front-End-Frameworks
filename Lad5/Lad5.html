@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+<div class="container" ng-app="myapp">
+    <div ng-controller="myctrl">
+        <form>
+            <div class="form-group">
+                <label>Họ và tên :</label>
+                <input ng-model="student.fullname" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Ngày sinh :</label>
+                <input ng-model="student.birthday" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Điểm :</label>
+                <input ng-model="student.mark" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button type="button" ng-click="insert()" ng-show="index == -1" class="btn btn-default">Thêm</button>
+                <button type="button" ng-click="update()" ng-show="index != -1" class="btn btn-default">Lưu</button>
+                <button type="button" ng-click="cancel()" ng-show="index == -1" class="btn btn-default">Hủy</button>
+                <button type="button" ng-click="clear()" ng-show="index != -1" class="btn btn-default">Thêm mới</button>
+            </div>
+        </form>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Họ và tên</th>
+                <th>Ngày sinh</th>
+                <th>Điểm</th>
+                <th>Xếp loại</th>
+                <th>Thao tác</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="student in students">
+                <td>{{student.fullname}}</td>
+                <td>{{student.birthday}}</td>
+                <td>{{student.mark}}</td>
+                <td>{{student.grade}}</td>
+                <td>
+                    <button type="button" ng-click="edit($index)" class="btn btn-default">Sửa</button>
+                    <button type="button" ng-click="delete($index)" class="btn btn-default">Xóa</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    var app = angular.module("myapp", []);
+    app.controller("myctrl", function ($scope) {
+        $scope.students = [];
+        $scope.student = {};
+        $scope.index = -1;
+        $scope.clear = function () {
+            $scope.student = {};
+            $scope.index = -1;
+        };
+        $scope.insert = function () {
+            $scope.calculateGrade(); 
+            $scope.students.push(angular.copy($scope.student));
+            $scope.clear();
+        };
+        $scope.update = function (index) {
+            $scope.calculateGrade(); 
+            $scope.students[$scope.index] = angular.copy($scope.student);
+        };
+        $scope.delete = function (index) {
+            $scope.students.splice(index, 1);
+            $scope.clear();
+        };
+        $scope.cancel = function () {
+            $scope.clear();
+        };
+        $scope.edit = function (index) {
+            $scope.index = index;
+            $scope.student = angular.copy($scope.students[index]);
+        };
+        $scope.calculateGrade = function () {
+            var score = parseFloat($scope.student.mark);
+            if (score >= 8.5) {
+                $scope.student.grade = "Giỏi";
+            } else if (score >= 6.5) {
+                $scope.student.grade = "Khá";
+            } else if (score >= 5) {
+                $scope.student.grade = "Trung bình";
+            } else {
+                $scope.student.grade = "Yếu";
+            }
+        };
+    });
+</script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
