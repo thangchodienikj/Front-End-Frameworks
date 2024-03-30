@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Tính tiền thưởng tết</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        input.ng-invalid {
+        background-image: url('/images/anh1.png');
+        background-size: contain;
+        background-position:center right;
+        background-repeat:no-repeat;
+        }
+    </style>
+</head>
+<body>
+<div class="container" ng-app="myapp" ng-controller="myctrl">
+    <div class="card-columns">
+        <div class="card">
+            <img class="card-img-top" src="holder.js/100x180/" alt="">
+            <div class="card-body">
+                <h4 class="card-title">Tính tiền thưởng tết</h4>
+                <form name="frmBonus" novalidate>
+                    <div class="form-group">
+                        <label for="txtFullname">Họ tên</label>
+                        <input type="text" ng-model="fullname" class="form-control" id="txtFullname" name="txtFullname" required>
+                        <small ng-show="frmBonus.txtFullname.$invalid" class="form-text text-muted">
+                            Vui lòng nhập họ và tên
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtdiem">Điểm</label>
+                        <input type="number" ng-model="diem" class="form-control" id="txtdiem" name="txtdiem" min="0" max="10" required>
+                        <small ng-show="frmBonus.txtdiem.$invalid" class="form-text text-muted">
+                            Điểm phải từ 0 đến 10
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtemail">Email</label>
+                        <input type="email" ng-model="email" class="form-control" id="txtSalary" name="txtemail"  required>
+                        <small ng-show="frmBonus.txtemail.$invalid" class="form-text text-muted">
+                            Không đúng định dạng email
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtsoxe">Số xe</label>
+                        <input type="text" ng-model="soxe" class="form-control" id="txtsoxe" name="txtsoxe" pattern="5\d-[A-Z]\d-((\d{4})|(\d{3}\.\d{2}))" required ng-model-options="{ updateOn: 'blur' }">
+                        <small ng-show="frmBonus.txtsoxe.$invalid && frmBonus.txtsoxe.$dirty" class="form-text text-muted">
+                            Số xe không đúng định dạng Sài Gòn (Ví dụ: 5X-1A-1234 hoặc 5X-1A-123.45)
+                        </small>
+                    </div>                          
+                </form>
+                <div class="panel-footer">
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <h4 ng-show="frmBonus.$valid">Chúc mừng bạn đã nhập đúng</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script>
+    var app = angular.module("myapp", []);
+    app.controller("myctrl", function ($scope) {
+        $scope.getBonus = function () {
+        }
+    });
+</script>
+</body>
+</html>
